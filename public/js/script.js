@@ -90,8 +90,4 @@ function deleteContact(id) {
                 location.replace('/contacts');
             });
     }
-    else {
-        alert("No se ha eliminado");
-    }
-
 }
