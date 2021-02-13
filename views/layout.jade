@@ -6,14 +6,28 @@ html
     script(src='/jquery/jquery.min.js')
     script(src='/bootstrap-js/bootstrap.min.js')
     link(rel='stylesheet' href='/stylesheets/style.css')
+    link(rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.2/css/all.css" integrity="sha384-vSIIfh2YWi9wW0r9iZe7RJPrKwp6bG+s9QZMoITbCckVJqGCCRhc+ccxNcdpHuYu" crossorigin="anonymous")
   body
     #site
       header
         h1 📖 STIKI: Gestión de contactos
       main 
         aside 
-          block aside
+          img(src="/images/agendacover.png" alt="xd").aside-img
+          hr
+          a(href="/").aside-link Todos los contactos
+          hr
+          a(href="/contacts/favs").aside-link Contactos FAVORITOS
+          hr
+          a(href="/contacts/groups").aside-link Grupos
         section 
           block section 
       footer 
-        p Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatum illum minus pariatur a iste quibusdam facere atque, et aperiam esse, quis dolor ullam cupiditate dolore nesciunt quas animi. Voluptatem, tempore!
+        p 
+          i.fab.fa-github
+          a(href='https://github.com/Santoxjon/BBK-Bootcamp-Proyecto-Modulo-02' target='_blank')#footer_link All the code is available here
+    script.
+      let header = document.getElementsByTagName("header")[0].clientHeight;
+      let footer = document.getElementsByTagName("footer")[0].clientHeight;
+      document.getElementsByTagName("main")[0].style.height = `calc(100vh - (${header}px + ${footer}px))`;
+    script(src="/js/script.js") 
