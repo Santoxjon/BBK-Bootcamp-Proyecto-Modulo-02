@@ -1,15 +1,51 @@
 extends layout
 
-block aside 
- .list-group
-  a.list-group-item.list-group-item-action.active(href='#')
-    | Cras justo odio
-  a.list-group-item.list-group-item-action(href='#') Dapibus ac facilisis in
-  a.list-group-item.list-group-item-action(href='#') Morbi leo risus
-  a.list-group-item.list-group-item-action(href='#') Porta ac consectetur ac
-  a.list-group-item.list-group-item-action.disabled(href='#') Vestibulum at eros
 block section 
-  p Lorem ipsum dolor sit amet consectetur adipisicing elit. Explicabo quos beatae, dicta asperiores dolorum laborum repellendus consectetur ducimus doloribus harum laboriosam enim eligendi blanditiis tempora porro, autem animi, ullam unde!e
-  p Lorem ipsum dolor sit amet consectetur adipisicing elit. Explicabo quos beatae, dicta asperiores dolorum laborum repellendus consectetur ducimus doloribus harum laboriosam enim eligendi blanditiis tempora porro, autem animi, ullam unde!e
-  p Lorem ipsum dolor sit amet consectetur adipisicing elit. Explicabo quos beatae, dicta asperiores dolorum laborum repellendus consectetur ducimus doloribus harum laboriosam enim eligendi blanditiis tempora porro, autem animi, ullam unde!e
-  p Lorem ipsum dolor sit amet consectetur adipisicing elit. Explicabo quos beatae, dicta asperiores dolorum laborum repellendus consectetur ducimus doloribus harum laboriosam enim eligendi blanditiis tempora porro, autem animi, ullam unde!e
+  #section_top 
+    h1=section_title
+      | &nbsp;(#{contacts.length})
+    a(href="/contacts/new").btn.btn-negro#new_contact
+      i.fas.fa-user-plus
+      | Nuevo contacto
+  #contacts 
+    if contacts.length > 0
+      each contact in contacts
+        .contact 
+          form(action=`javascript:deleteContact('${contact._id}')` method="POST")
+            .personal-data
+              .label-input-group
+                label(for="") Nombre:
+                input(type="text" name="name" readonly value=`${contact.name}`).form-control
+              .label-input-group
+                label(for="") Apellido:
+                input(type="text" name="lastname" readonly value=`${contact.lastname}`).form-control
+              .label-input-group
+                label(for="") Número de teléfono:
+                // input(type="tel" name="phone" readonly value=`${contact.phone}`).form-control
+                a(href=`tel:${contact.phone}`).form-control #{contact.phone}
+            .address-data
+              .label-input-group
+                label(for="") Email: 
+                input(type="text" name="email" readonly value=`${contact.email}`).form-control
+              .label-input-group
+                label(for="") Dirección: 
+                input(type="text" name="address" readonly value=`${contact.address}`).form-control
+              .label-input-group
+                label(for="") Código postal: 
+                input(type="text" name="zip" readonly value=`${contact.zip}`).form-control
+            .contact-links 
+              span
+              if contact.fav
+                span.star.filled(id=`star_${contact._id}`)
+                  i.fas.fa-star.fa-2x
+              else 
+                span.star.empty(id=`star_${contact._id}`)
+                  i.fas.fa-star.fa-2x
+              a(href=`/contacts/edit/${contact._id}`).btn.btn-negro.btn-edit
+                i.fas.fa-user-edit
+                | Editar
+              button(type="submit").btn.btn-negro.btn-delete
+                i.fas.fa-user-slash
+                | Eliminar
+    else
+      p No hay contactos, por qué no empezamos creando uno?
