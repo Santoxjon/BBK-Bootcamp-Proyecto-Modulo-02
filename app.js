@@ -7,17 +7,17 @@ var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 
 var indexRouter = require('./routes/index');
-var usersRouter = require('./routes/users');
+let contactRouter = require('./routes/contacts');
 
 var app = express();
 
 // Mongo
-MongoClient.connect("mongodb://127.0.0.1:27017", function (err, client) { // Local
-// MongoClient.connect("mongodb://192.168.0.25:27017", function (err, client) { // Remote
+MongoClient.connect("mongodb+srv://jon:jonjon@cluster0.z5bzl.mongodb.net/<dbname>?retryWrites=true&w=majority", function (err, client) { // Local
+  // MongoClient.connect("mongodb://127.0.0.1:27017", function (err, client) {
   if (err !== null) {
     console.log(err);
   } else {
-    app.locals.db = client.db("hotel");
+    app.locals.db = client.db("stiki");
   }
 });
 
@@ -37,7 +37,7 @@ app.use('/jquery', express.static(__dirname + '/node_modules/jquery/dist')); // 
 app.use('/bootstrap-css', express.static(__dirname + '/node_modules/bootstrap/dist/css')); // redirect CSS bootstrap
 
 app.use('/', indexRouter);
-app.use('/users', usersRouter);
+app.use('/contacts', contactRouter);
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
