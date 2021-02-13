@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            margin: 0;
+            background-color: linen;
+        }
+
+        #site {
+            width: 768px;
+            min-height: 100vh;
+            display: grid;
+            grid-template-rows: auto 1fr auto;
+        }
+
+        main {
+            display: grid;
+            grid-template-columns: 30% 1fr;
+        }
+        header {
+            background-color: lightblue;
+            padding: 7.5px 10px;
+        }
+        footer {
+            background-color: lightgreen;
+            padding: 7.5px 10px;
+        }
+        aside{
+            background-color: lightsalmon;
+            display: flex;
+            flex-direction: column;
+            padding: 7.5px;
+        }
+        section {
+            background-color: lightsteelblue;
+            padding: 7.5px;
+        }
+
+        img {
+            object-fit: cover;
+            width: 100%;
+            align-self: center;
+        }
+
+        p {
+            margin: 0;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="site">
+        <header>
+            <h1>Titulo + Logo</h1>
+        </header>
+        <main>
+            <aside>
+                <img src="https://www.picsum.photos/300/200" alt="">
+                <hr style="width: 100%;">
+                <a href="">Todos los contactos</a>
+                <a href="">Contactos Favoritos</a>
+                <a href="">Grupos</a>
+                <p>&nbsp;&nbsp;&nbsp;&nbsp;Grupo guay 123</p>
+                <p>&nbsp;&nbsp;&nbsp;&nbsp;Grupo guay 123</p>
+                <p>&nbsp;&nbsp;&nbsp;&nbsp;Grupo guay 123</p>
+                <p>&nbsp;&nbsp;&nbsp;&nbsp;Grupo guay 123</p>
+                <h1>ESTE ASIDE SERÁ COLAPSABLE</h1>
+            </aside>
+            <section>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Vel quo veritatis aliquid quibusdam, maiores
+                    velit expedita consectetur impedit ipsam at quis doloremque repudiandae qui explicabo culpa ab,
+                    voluptas labore iusto?</p>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Vel quo veritatis aliquid quibusdam, maiores
+                    velit expedita consectetur impedit ipsam at quis doloremque repudiandae qui explicabo culpa ab,
+                    voluptas labore iusto?</p>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Vel quo veritatis aliquid quibusdam, maiores
+                    velit expedita consectetur impedit ipsam at quis doloremque repudiandae qui explicabo culpa ab,
+                    voluptas labore iusto?</p>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Vel quo veritatis aliquid quibusdam, maiores
+                    velit expedita consectetur impedit ipsam at quis doloremque repudiandae qui explicabo culpa ab,
+                    voluptas labore iusto?</p>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Vel quo veritatis aliquid quibusdam, maiores
+                    velit expedita consectetur impedit ipsam at quis doloremque repudiandae qui explicabo culpa ab,
+                    voluptas labore iusto?</p>
+            </section>
+        </main>
+        <footer>
+            <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quos modi eum fugiat velit! Beatae eum libero
+                voluptates maiores. Voluptas mollitia magni explicabo consequuntur aliquam deserunt repudiandae soluta,
+                esse ea necessitatibus?</p>
+        </footer>
+    </div>
+</body>
+
+</html>
