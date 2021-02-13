@@ -1,0 +1,34 @@
+extends layout
+
+block section 
+    #section_top 
+        h1=section_title
+    #contacts 
+        .contact
+            form(action="?" method="post") 
+                .personal-data
+                    .label-input-group
+                        label(for="") Nombre:
+                        input(type="text" name="name" value="" required).form-control
+                    .label-input-group
+                        label(for="") Apellido:
+                        input(type="text" name="lastname" value="" required).form-control
+                    .label-input-group
+                        label(for="") Número de teléfono:
+                        input(type="tel" name="phone" value="").form-control
+                .address-data
+                    .label-input-group
+                        label(for="") Email: 
+                        input(type="text" name="email" value="").form-control
+                    .label-input-group
+                        label(for="") Dirección: 
+                        input(type="text" name="address" value="").form-control
+                    .label-input-group
+                        label(for="") Código postal: 
+                        input(type="number" name="zip" value="" min="0").form-control
+                .contact-links 
+                    span
+                    span
+                    button(type="submit").btn.btn-negro
+                        i.fas.fa-save
+                        | Guardar 
