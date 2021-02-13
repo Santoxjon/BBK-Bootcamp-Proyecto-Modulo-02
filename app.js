@@ -1,6 +1,8 @@
 var createError = require('http-errors');
 var express = require('express');
-var path = require('path');
+const mongodb = require('mongodb');
+const path = require('path');
+let MongoClient = mongodb.MongoClient;
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 
@@ -8,6 +10,16 @@ var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 
 var app = express();
+
+// Mongo
+MongoClient.connect("mongodb://127.0.0.1:27017", function (err, client) { // Local
+// MongoClient.connect("mongodb://192.168.0.25:27017", function (err, client) { // Remote
+  if (err !== null) {
+    console.log(err);
+  } else {
+    app.locals.db = client.db("hotel");
+  }
+});
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -19,16 +31,21 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
+// Bootstrap
+app.use('/bootstrap-js', express.static(__dirname + '/node_modules/bootstrap/dist/js')); // redirect bootstrap JS
+app.use('/jquery', express.static(__dirname + '/node_modules/jquery/dist')); // redirect JS jQuery
+app.use('/bootstrap-css', express.static(__dirname + '/node_modules/bootstrap/dist/css')); // redirect CSS bootstrap
+
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
 
 // catch 404 and forward to error handler
-app.use(function(req, res, next) {
+app.use(function (req, res, next) {
   next(createError(404));
 });
 
 // error handler
-app.use(function(err, req, res, next) {
+app.use(function (err, req, res, next) {
   // set locals, only providing error in development
   res.locals.message = err.message;
   res.locals.error = req.app.get('env') === 'development' ? err : {};

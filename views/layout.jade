@@ -1,7 +1,19 @@
 doctype html
 html
   head
-    title= title
-    link(rel='stylesheet', href='/stylesheets/style.css')
+    title= title 
+    link(rel='stylesheet' href='/bootstrap-css/bootstrap.min.css')
+    script(src='/jquery/jquery.min.js')
+    script(src='/bootstrap-js/bootstrap.min.js')
+    link(rel='stylesheet' href='/stylesheets/style.css')
   body
-    block content
+    #site
+      header
+        h1 📖 STIKI: Gestión de contactos
+      main 
+        aside 
+          block aside
+        section 
+          block section 
+      footer 
+        p Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatum illum minus pariatur a iste quibusdam facere atque, et aperiam esse, quis dolor ullam cupiditate dolore nesciunt quas animi. Voluptatem, tempore!

@@ -1,8 +1,52 @@
-body {
-  padding: 50px;
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+* {
+  font-family: Roboto, sans-serif;
 }
 
-a {
-  color: #00B7FF;
+body {
+  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+  display: flex;
+  justify-content: center;
+  background-color: #fffeee;
+}
+
+#site {
+  width: 1280px;
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+  min-height: 100vh;
+}
+
+#site>*:not(main) {
+  padding: 20px;
+}
+
+main>* {
+  padding: 5px 10px;
+}
+
+header {
+  background-color: ligh;
+  background-color: #BEDCDA;
+}
+
+h1 {
+  margin: 0;
+}
+
+main {
+  background-color: #CED7D3;
+  display: grid;
+  grid-template-columns: 17.5% auto;
+}
+
+footer {
+  background-color: #BEDCDA;
+}
+
+#nada {
+  color: #7ACCD0;
+  color: #BEDCDA;
+  color: #CED7D3;
+  color: #EFDBB4;
 }
