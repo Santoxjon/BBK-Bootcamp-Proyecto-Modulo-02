@@ -19,13 +19,11 @@ body {
   min-height: 100vh;
 }
 
-#site>*:not(main) {
-  padding: 20px;
-}
-
 header {
+  padding: 20px;
   color: #fffffe;
   background-color: #222d32;
+  user-select: none;
 }
 
 h1 {
@@ -45,6 +43,7 @@ aside {
   background-color: #222d32;
   display: flex;
   flex-direction: column;
+  user-select: none;
 }
 
 .aside-img {
@@ -59,7 +58,7 @@ aside hr {
 
 .aside-link {
   color: #fffffe;
-  font-size: 1.4em;
+  font-size: 1.2em;
 }
 
 .aside-link:hover {
@@ -70,7 +69,6 @@ aside hr {
 
 .btn {
   color: #fffffe;
-  font-size: 1.3rem;
 }
 
 .btn:hover {
@@ -122,8 +120,8 @@ section::-webkit-scrollbar-thumb {
   z-index: 25;
 }
 
-#section_top a {
-  font-size: 1.4em;
+h2{
+  margin-bottom: 0;
 }
 
 #contacts {
@@ -137,7 +135,6 @@ section::-webkit-scrollbar-thumb {
   padding: 15px;
   background-color: #e0e0e0;
   border-radius: 3px;
-  font-size: 1.3em;
   border: 1px solid #3c515a;
 }
 
@@ -151,6 +148,7 @@ form * {
 
 .form-control[readonly] {
   background-color: #ffffff;
+  font-size: 1em;
 }
 
 .contact>form>div {
@@ -223,18 +221,26 @@ form * {
   flex-direction: column;
 }
 
+#no_results {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 footer {
   background-color: #222d32;
+  padding: 15px 0;
+  user-select: none;
 }
 
 footer p {
-  margin: 0;
   text-align: center;
+  margin-bottom: 0;
 }
 
 #footer_link, footer i {
   color: #fffffe;
-  font-size: 1.5em;
+  font-size: 1.3em;
 }
 
 #footer_link {
