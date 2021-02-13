@@ -1,0 +1,35 @@
+extends layout
+
+block section 
+    #section_top 
+        h1=section_title
+    #contacts 
+        .contact
+            form(action="javascript:editContact()") 
+                .personal-data
+                    .label-input-group
+                        input(type="hidden" id="id" value=`${contact._id}`)
+                        label(for="") Nombre:
+                        input(type="text" id="name" value=`${contact.name}` required).form-control
+                    .label-input-group
+                        label(for="") Apellido:
+                        input(type="text" id="lastname" value=`${contact.lastname}` required).form-control
+                    .label-input-group
+                        label(for="") Número de teléfono:
+                        input(type="tel" id="phone" value=`${contact.phone}`).form-control
+                .address-data
+                    .label-input-group
+                        label(for="") Email: 
+                        input(type="text" id="email" value=`${contact.email}`).form-control
+                    .label-input-group
+                        label(for="") Dirección: 
+                        input(type="text" id="address" value=`${contact.address}`).form-control
+                    .label-input-group
+                        label(for="") Código postal: 
+                        input(type="number" id="zip" value=`${contact.zip}` min="0").form-control
+                .contact-links 
+                    span
+                    span
+                    button(type="submit").btn.btn-negro
+                        i.fas.fa-save
+                        | Guardar 
