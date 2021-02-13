@@ -2,13 +2,14 @@ extends layout
 
 block section 
   #section_top 
-    h1=section_title
+    h2=section_title
       | &nbsp;(#{contacts.length})
     a(href="/contacts/new").btn.btn-negro#new_contact
       i.fas.fa-user-plus
       | Nuevo contacto
-  #contacts 
-    if contacts.length > 0
+
+  if contacts.length > 0
+    #contacts 
       each contact in contacts
         .contact 
           form(action=`javascript:deleteContact('${contact._id}')` method="POST")
@@ -47,5 +48,9 @@ block section
               button(type="submit").btn.btn-negro.btn-delete
                 i.fas.fa-user-slash
                 | Eliminar
-    else
-      p No hay contactos, por qué no empezamos creando uno?
+  else
+    #no_results
+      h3=no_results
+    script.
+      let section_top = document.getElementById("section_top").clientHeight;
+      document.getElementById("no_results").style.height = `calc(100% - ${section_top}px)`;

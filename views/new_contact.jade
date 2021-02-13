@@ -2,7 +2,7 @@ extends layout
 
 block section 
     #section_top 
-        h1=section_title
+        h2=section_title
     #contacts 
         .contact
             form(action="?" method="post") 
@@ -27,6 +27,7 @@ block section
                         label(for="") Código postal: 
                         input(type="number" name="zip" value="" min="0").form-control
                 .contact-links 
+                    span
                     span
                     span
                     button(type="submit").btn.btn-negro
