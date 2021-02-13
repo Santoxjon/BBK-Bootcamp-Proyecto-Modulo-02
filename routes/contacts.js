@@ -13,7 +13,7 @@ router.get('/', function (req, res, next) {
             console.log(err);
             res.send({ mensaje: "error: " + err });
         } else {
-            res.render('index', { contacts: data, title: "Página principal", section_title: "Todos los contactos" });
+            res.render('index', { contacts: data, title: "Página principal", section_title: "Todos los contactos", no_results: "No hay contactos, ¿creamos uno nuevo?"});
         }
     });
 });
@@ -128,7 +128,7 @@ router.get('/favs', function (req, res, next) {
             console.log(err);
             res.send({ mensaje: "error: " + err });
         } else {
-            res.render('index', { contacts: data, title: "Contactos favoritos", section_title: "Contactos Favoritos" });
+            res.render('index', { contacts: data, title: "Contactos favoritos", section_title: "Contactos Favoritos", no_results: "No tienes contactos favoritos prueba a darle a la estrella!"});
         }
     });
 });
@@ -145,7 +145,7 @@ router.get('/fake/:num', function (req, res, next) {
         zip = faker.address.zipCode();
         fav = false;
 
-        req.app.locals.db.collection("contact").insertOne({ name, lastname, phone, email, address, zip, fav }, function (err) {
+        req.app.locals.db.collection("contact").insertOne({ name, lastname, phone, email, address, zip, fav }, function (err, data) {
             if (err != null) {
                 console.log(err);
                 res.send({ mensaje: "error: " + err });
