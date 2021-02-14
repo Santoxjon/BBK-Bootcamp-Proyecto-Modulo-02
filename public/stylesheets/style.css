@@ -30,6 +30,11 @@ h1 {
   margin: 0;
 }
 
+h1>a, h1:hover>a {
+  text-decoration: none;
+  color: #fffffe;
+}
+
 main {
   display: grid;
   grid-template-columns: 17.5% auto;
@@ -138,26 +143,42 @@ h2 {
   padding: 10px;
 }
 
-.contact, .group {
+.new-contact, .contact {
   padding: 15px;
   background-color: #e0e0e0;
   border-radius: 3px;
   border: 1px solid #3c515a;
 }
 
-.contact {
+.new-contact, .contact {
   display: grid;
-  grid-template-columns: 1fr 3fr;
   column-gap: 5px;
 }
 
-.contact:hover, .group:hover {
+.contact {
+  grid-template-columns: 1fr 3fr;
+}
+
+.new-contact {
+  grid-template-columns: 1fr;
+}
+
+.new-contact:hover, .contact:hover {
   background-color: #eeeeee;
 }
 
-.pic img{
+.pic img {
   width: 200px;
   object-fit: cover;
+}
+
+.qr-code {
+  display: none;
+  cursor: pointer;
+}
+
+.prof-pic {
+  cursor: pointer;
 }
 
 form * {
@@ -172,7 +193,7 @@ form * {
   background-color: #ffffff;
 }
 
-.contact>form>div {
+.new-contact>form>div, .contact>form>div {
   display: grid;
   grid-gap: 20px;
 }
@@ -181,7 +202,7 @@ form * {
   grid-gap: 20px;
 }
 
-.contact>form>div:not(:last-child) {
+.new-contact>form>div:not(:last-child), .contact>form>div:not(:last-child) {
   margin-bottom: 20px;
 }
 
