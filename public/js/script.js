@@ -1,8 +1,35 @@
 if (location.pathname != "/contacts") {
-    document.getElementById("new_contact").style.display = "none";
+    document.querySelector("#new_contact").style.display = "none";
 }
 
+(loadQRListeners());
+
 (loadFavs());
+
+function loadQRListeners() {
+    let prof_pics = document.querySelectorAll(".prof-pic");
+    prof_pics.forEach(prof_pic => {
+        let contact_id = prof_pic.id.split('_')[1];
+
+        prof_pic.onclick = (e) => {
+            prof_pic.style.display = "none";
+            let qr = document.getElementById(`qr_${contact_id}`);
+            qr.style.display = "block";
+            loadQRListeners();
+        };
+    });
+
+    let qr_codes = document.querySelectorAll(".qr-code");
+    qr_codes.forEach(qr_code => {
+        let contact_id = qr_code.id.split('_')[1];
+        qr_code.onclick = (e) => {
+            qr_code.style.display = "none";
+            let prof_pic = document.getElementById(`prof_${contact_id}`);
+            prof_pic.style.display = "block";
+            loadQRListeners();
+        };
+    });
+}
 
 function loadFavs() {
     let stars = document.querySelectorAll(".star");
@@ -39,10 +66,10 @@ function loadFavs() {
                 .then((res) => res.json())
                 .then(() => {
                     console.log(msg);
+                    if (location.pathname === "/contacts/favs") {
+                        location.reload();
+                    }
                 });
-            if (location.pathname === "/contacts/favs") {
-                location.reload();
-            }
             loadFavs();
         };
     });
@@ -69,7 +96,7 @@ function editContact() {
     fetch(url, fetchData)
         .then((res) => res.json())
         .then(() => {
-            location.replace('/contacts');
+            location.replace(`/contacts#contact_${id}`);
         });
 }
 
@@ -87,7 +114,7 @@ function deleteContact(id) {
         fetch(url, fetchData)
             .then((res) => res.json())
             .then(() => {
-                location.replace('/contacts');
+                location.reload();
             });
     }
 }
