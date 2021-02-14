@@ -11,9 +11,10 @@ block section
   if contacts.length > 0
     #contacts 
       each contact, index in contacts
-        .contact
-          .pic 
-            img(src="https://qrickit.com/api/qr.php?d=BEGIN%3AVCARD%0AVERSION%3A3.0%0AN%3A" + contact.lastname +"%3B"+contact.name+"%0AEMAIL%3A"+contact.email+"%0ATEL%3BTYPE%3DCELL%3A"+contact.phone+"%0AADR%3BTYPE%3DHOME%3A%3B%3B"+contact.address+"%3B%3B%3B"+contact.zip+"%0AEND%3AVCARD1" alt="")(id=`profilepic_${contact._id}`)
+        .contact(id=`contact_${contact._id}`)
+          .pic
+            img(src=`${contact.profilepic}`, alt="")(id=`prof_${contact._id}`).prof-pic
+            img(src="https://qrickit.com/api/qr.php?bgdcolor=E0E0E0&d=BEGIN%3AVCARD%0AVERSION%3A3.0%0AN%3A" + contact.lastname +"%3B"+contact.name+"%0AEMAIL%3A"+contact.email+"%0ATEL%3BTYPE%3DCELL%3A"+contact.phone+"%0AADR%3BTYPE%3DHOME%3A%3B%3B"+contact.address+"%3B%3B%3B"+contact.zip+"%0AEND%3AVCARD1" alt="")(id=`qr_${contact._id}`).qr-code
           form(action=`javascript:deleteContact('${contact._id}')` method="POST")
             .personal-data
               .label-input-group
