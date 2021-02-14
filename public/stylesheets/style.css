@@ -120,7 +120,7 @@ section::-webkit-scrollbar-thumb {
   z-index: 25;
 }
 
-h2{
+h2 {
   margin-bottom: 0;
 }
 
@@ -131,24 +131,45 @@ h2{
   padding: 10px;
 }
 
-.contact {
+#groups {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-gap: 10px;
+  padding: 10px;
+}
+
+.contact, .group {
   padding: 15px;
   background-color: #e0e0e0;
   border-radius: 3px;
   border: 1px solid #3c515a;
 }
 
-.contact:hover {
+.contact {
+  display: grid;
+  grid-template-columns: 1fr 3fr;
+  column-gap: 5px;
+}
+
+.contact:hover, .group:hover {
   background-color: #eeeeee;
+}
+
+.pic img{
+  width: 200px;
+  object-fit: cover;
 }
 
 form * {
   user-select: none !important;
 }
 
+.form-control {
+  font-size: 1em;
+}
+
 .form-control[readonly] {
   background-color: #ffffff;
-  font-size: 1em;
 }
 
 .contact>form>div {
@@ -156,8 +177,18 @@ form * {
   grid-gap: 20px;
 }
 
+.group>form>div {
+  grid-gap: 20px;
+}
+
 .contact>form>div:not(:last-child) {
   margin-bottom: 20px;
+}
+
+.group>form {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-gap: 20px;
 }
 
 .personal-data {
@@ -169,7 +200,16 @@ form * {
 }
 
 .contact-links {
-  grid-template-columns: 3fr 1fr 1fr 1fr;
+  grid-template-columns: 2fr 1fr 1fr 1fr;
+}
+
+.group-data {
+  grid-template-columns: 2fr 3fr;
+}
+
+.group-links {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
 }
 
 .star {

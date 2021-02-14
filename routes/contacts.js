@@ -13,11 +13,10 @@ router.get('/', function (req, res, next) {
             console.log(err);
             res.send({ mensaje: "error: " + err });
         } else {
-            res.render('index', { contacts: data, title: "Página principal", section_title: "Todos los contactos", no_results: "No hay contactos, ¿creamos uno nuevo?"});
+            res.render('index', { contacts: data, title: "Página principal", section_title: "Todos los contactos", no_results: "No hay contactos, ¿creamos uno nuevo?" });
         }
     });
 });
-
 
 // Nuevo  contacto
 router.get('/new', function (req, res, next) {
@@ -42,7 +41,6 @@ router.post('/new', function (req, res, next) {
         }
     });
 });
-
 
 // Editar contacto
 router.get('/edit/:id', function (req, res, next) {
@@ -128,7 +126,7 @@ router.get('/favs', function (req, res, next) {
             console.log(err);
             res.send({ mensaje: "error: " + err });
         } else {
-            res.render('index', { contacts: data, title: "Contactos favoritos", section_title: "Contactos Favoritos", no_results: "No tienes contactos favoritos prueba a darle a la estrella!"});
+            res.render('index', { contacts: data, title: "Contactos favoritos", section_title: "Contactos Favoritos", no_results: "No tienes contactos favoritos prueba a darle a la estrella!" });
         }
     });
 });
@@ -144,8 +142,9 @@ router.get('/fake/:num', function (req, res, next) {
         address = faker.address.streetAddress();
         zip = faker.address.zipCode();
         fav = false;
+        profilepic = `https://avatars.dicebear.com/4.5/api/male/${faker.random.number()}.svg`;
 
-        req.app.locals.db.collection("contact").insertOne({ name, lastname, phone, email, address, zip, fav }, function (err, data) {
+        req.app.locals.db.collection("contact").insertOne({ name, lastname, phone, email, address, zip, fav, profilepic }, function (err, data) {
             if (err != null) {
                 console.log(err);
                 res.send({ mensaje: "error: " + err });

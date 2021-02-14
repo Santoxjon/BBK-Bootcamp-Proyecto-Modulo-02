@@ -10,8 +10,10 @@ block section
 
   if contacts.length > 0
     #contacts 
-      each contact in contacts
-        .contact 
+      each contact, index in contacts
+        .contact
+          .pic 
+            img(src="https://qrickit.com/api/qr.php?d=BEGIN%3AVCARD%0AVERSION%3A3.0%0AN%3A" + contact.lastname +"%3B"+contact.name+"%0AEMAIL%3A"+contact.email+"%0ATEL%3BTYPE%3DCELL%3A"+contact.phone+"%0AADR%3BTYPE%3DHOME%3A%3B%3B"+contact.address+"%3B%3B%3B"+contact.zip+"%0AEND%3AVCARD1" alt="")(id=`profilepic_${contact._id}`)
           form(action=`javascript:deleteContact('${contact._id}')` method="POST")
             .personal-data
               .label-input-group
@@ -43,8 +45,8 @@ block section
                 span.star.empty(id=`star_${contact._id}`)
                   i.fas.fa-star.fa-2x
               a(href=`/contacts/edit/${contact._id}`).btn.btn-negro.btn-edit
-                i.fas.fa-user-edit
-                | Editar
+                i.fas.fa-user-cog
+                | Detalles
               button(type="submit").btn.btn-negro.btn-delete
                 i.fas.fa-user-slash
                 | Eliminar

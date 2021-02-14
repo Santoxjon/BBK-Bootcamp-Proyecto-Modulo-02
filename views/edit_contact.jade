@@ -4,7 +4,9 @@ block section
     #section_top 
         h2=section_title
     #contacts 
-        .contact
+        .contact(style="margin-right: 12px")
+            .pic 
+                img(src=`${contact.profilepic}`, alt="")
             form(action="javascript:editContact()") 
                 .personal-data
                     .label-input-group
