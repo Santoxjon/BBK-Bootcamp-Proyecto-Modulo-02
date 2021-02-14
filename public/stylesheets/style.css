@@ -58,7 +58,7 @@ aside {
 
 aside hr {
   width: 100%;
-  border-color: white;
+  border-color: #e0e0e0;
 }
 
 .aside-link {
@@ -123,6 +123,7 @@ section::-webkit-scrollbar-thumb {
   top: 0;
   background-color: #798c94;
   z-index: 25;
+  user-select: none;
 }
 
 h2 {
@@ -165,6 +166,10 @@ h2 {
 
 .new-contact:hover, .contact:hover {
   background-color: #eeeeee;
+}
+
+.pic {
+  user-select: none;
 }
 
 .pic img {
@@ -286,6 +291,10 @@ form * {
   display: flex;
   justify-content: center;
   align-items: center;
+}
+
+h3 {
+  user-select: none;
 }
 
 footer {
