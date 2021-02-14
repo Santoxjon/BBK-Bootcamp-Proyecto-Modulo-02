@@ -30,8 +30,10 @@ router.post('/new', function (req, res, next) {
     let email = req.body.email;
     let address = req.body.address;
     let zip = req.body.zip;
+    let fav = false;
+    let profilepic = `https://avatars.dicebear.com/4.5/api/male/${faker.random.number()}.svg`;
 
-    req.app.locals.db.collection("contact").insertOne({ name, lastname, phone, email, address, zip }, function (err) {
+    req.app.locals.db.collection("contact").insertOne({ name, lastname, phone, email, address, zip, fav, profilepic }, function (err) {
         if (err != null) {
             console.log(err);
             res.send({ mensaje: "error: " + err });
