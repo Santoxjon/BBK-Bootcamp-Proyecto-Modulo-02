@@ -3,7 +3,7 @@ var router = express.Router();
 let faker = require('faker/locale/es');
 const { ObjectID, ReplSet } = require('mongodb');
 router.use(express.json());
-router.use(express.urlencoded({ extended: false }));
+router.use(express.urlencoded({ extended: true }));
 
 // Todos los contactos
 router.get('/', function (req, res, next) {
