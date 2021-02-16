@@ -174,7 +174,7 @@ router.get('/fake/:num', function (req, res, next) {
         address = faker.address.streetAddress();
         zip = faker.address.zipCode();
         fav = false;
-        profilepic = `https://avatars.dicebear.com/4.5/api/male/${faker.random.number()}.svg`;
+        profilepic = `https://avatars.dicebear.com/4.5/api/avataaars/${faker.random.number()}.svg`;
 
         req.app.locals.db.collection("contact").insertOne({ name, lastname, phone, email, address, zip, fav, profilepic }, function (err, data) {
             if (err != null) {
