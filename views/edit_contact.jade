@@ -2,7 +2,7 @@ extends layout
 
 block section 
     #section_top 
-        h2=section_title
+        h2#section_title=section_title
         a(href="/contacts/new").btn.btn-negro#new_contact
             i.fas.fa-user-plus
             | Nuevo contacto
@@ -10,7 +10,7 @@ block section
         .contact(style="margin-right: 12px")
             .pic 
                 img(src=`${contact.profilepic}`, alt="")(id=`prof_${contact._id}`).prof-pic
-                img(src="https://qrickit.com/api/qr.php?d=BEGIN%3AVCARD%0AVERSION%3A3.0%0AN%3A" + contact.lastname +"%3B"+contact.name+"%0AEMAIL%3A"+contact.email+"%0ATEL%3BTYPE%3DCELL%3A"+contact.phone+"%0AADR%3BTYPE%3DHOME%3A%3B%3B"+contact.address+"%3B%3B%3B"+contact.zip+"%0AEND%3AVCARD1" alt="")(id=`qr_${contact._id}`).qr-code
+                img(src="https://qrickit.com/api/qr.php?bgdcolor=EEEEEE&d=BEGIN%3AVCARD%0AVERSION%3A3.0%0AN%3A" + contact.lastname +"%3B"+contact.name+"%0AEMAIL%3A"+contact.email+"%0ATEL%3BTYPE%3DCELL%3A"+contact.phone+"%0AADR%3BTYPE%3DHOME%3A%3B%3B"+contact.address+"%3B%3B%3B"+contact.zip+"%0AEND%3AVCARD1" alt="")(id=`qr_${contact._id}`).qr-code
             form(action="javascript:editContact()") 
                 .personal-data
                     .label-input-group
@@ -33,9 +33,10 @@ block section
                     .label-input-group
                         label(for="") Código postal: 
                         input(type="number" id="zip" value=`${contact.zip}` min="0").form-control
-                .contact-links 
-                    span
-                    span
+                .contact-links
+                    #change_pic 
+                        label(for="photo") Cambiar foto
+                    input(type="file" accept="image/jpeg, image/png, image/jpg" name="photo" id="photo" style="visibility: hidden") 
                     span
                     button(type="submit").btn.btn-negro
                         i.fas.fa-save
