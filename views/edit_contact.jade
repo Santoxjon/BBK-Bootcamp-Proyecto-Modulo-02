@@ -34,9 +34,7 @@ block section
                         label(for="") Código postal: 
                         input(type="number" id="zip" value=`${contact.zip}` min="0").form-control
                 .contact-links
-                    #change_pic 
-                        label(for="photo") Cambiar foto
-                    input(type="file" accept="image/png" name="image" id="photo" style="visibility: hidden") 
+                    span
                     span
                     button(type="submit").btn.btn-negro
                         i.fas.fa-save
