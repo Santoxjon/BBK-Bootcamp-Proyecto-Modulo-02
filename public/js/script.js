@@ -80,7 +80,7 @@ function editContact() {
     let data = { name, lastname, phone, email, address, zip };
 
     let fetchData = {
-        method: 'POST',
+        method: 'PUT',
         headers: { 'Content-Type': "application/json" },
         body: JSON.stringify(data)
     }
