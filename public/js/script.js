@@ -34,7 +34,6 @@ function loadFavs() {
         let fav = false;
         let data = { id, fav };
         let url = "";
-        let msg = "";
 
         star.onclick = (e) => {
             if (star.classList.contains("filled")) {
@@ -42,14 +41,12 @@ function loadFavs() {
                 data.fav = false;
                 star.classList.remove("filled");
                 star.classList.add("empty");
-                msg = "Removed from favs";
             }
             else {
                 url = `/contacts/${id}/fav`;
                 data.fav = true;
                 star.classList.add("filled");
                 star.classList.remove("empty");
-                msg = "Add from favs";
             }
 
             let fetchData = {
@@ -83,7 +80,7 @@ function editContact() {
     let data = { name, lastname, phone, email, address, zip };
 
     let fetchData = {
-        method: 'PUT',
+        method: 'POST',
         headers: { 'Content-Type': "application/json" },
         body: JSON.stringify(data)
     }
