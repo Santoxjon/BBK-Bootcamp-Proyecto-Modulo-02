@@ -2,11 +2,20 @@ extends layout
 
 block section 
   #section_top 
-    h2=section_title
+    h2#section_title=section_title
       | &nbsp;(#{contacts.length})
     a(href="/contacts/new").btn.btn-negro#new_contact
       i.fas.fa-user-plus
       | Nuevo contacto
+    form(action="/contacts/search" method="GET")#search_form
+      select(name="field").form-control
+        option(value="name") Nombre
+        option(value="lastname") Apellido
+        option(value="phone") Teléfono 
+      input(type="text" name="search_text" placeholder="Qué estamos buscando?", required).form-control
+      button(type="submit" value="Buscar").btn-negro.btn
+        i.fas.fa-search
+        | Búsqueda
 
   if contacts.length > 0
     #contacts 

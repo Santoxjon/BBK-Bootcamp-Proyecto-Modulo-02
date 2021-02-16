@@ -133,6 +133,36 @@ router.get('/favs', function (req, res, next) {
     });
 });
 
+// Búsqueda
+router.get('/search', function (req, res, next) {
+    let search_field = req.query.field;
+    let search_text = req.query.search_text;
+
+    req.app.locals.db.collection("contact").find({ [search_field]: new RegExp(search_text, "i") }).sort({ "name": 1 }).toArray(function (err, data) {
+        if (err != null) {
+            console.log(err);
+            res.send({ mensaje: "error: " + err });
+        } else {
+            res.render('index', { contacts: data, title: "Busqueda", section_title: "Búsqueda:", no_results: "No hay resultados!" });
+        }
+    });
+});
+
+// Búsqueda FAVS
+router.get('/search/favs', function (req, res, next) {
+    let search_field = req.query.field;
+    let search_text = req.query.search_text;
+
+    req.app.locals.db.collection("contact").find({ [search_field]: new RegExp(search_text, "i"), fav: true}).sort({ "name": 1 }).toArray(function (err, data) {
+        if (err != null) {
+            console.log(err);
+            res.send({ mensaje: "error: " + err });
+        } else {
+            res.render('index', { contacts: data, title: "Busqueda", section_title: "Búsqueda:", no_results: "No hay resultados!" });
+        }
+    });
+});
+
 router.get('/fake/:num', function (req, res, next) {
     let name = "", lastname = "", phone = "", email = "", address = "", zip = "";
 

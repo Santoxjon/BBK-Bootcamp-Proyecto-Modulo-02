@@ -1,5 +1,6 @@
 if (location.pathname != "/contacts") {
     document.querySelector("#new_contact").style.display = "none";
+    document.querySelector('#search_form').action = "/contacts/search/favs";
 }
 
 (loadQRListeners());
@@ -65,7 +66,6 @@ function loadFavs() {
             fetch(url, fetchData)
                 .then((res) => res.json())
                 .then(() => {
-                    console.log(msg);
                     if (location.pathname === "/contacts/favs") {
                         location.reload();
                     }
@@ -96,7 +96,7 @@ function editContact() {
     fetch(url, fetchData)
         .then((res) => res.json())
         .then(() => {
-            location.replace(`/contacts#contact_${id}`);
+            location.replace(`/contacts`);
         });
 }
 

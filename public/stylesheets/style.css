@@ -97,6 +97,7 @@ aside hr {
 section {
   background-color: #fffffe;
   overflow-y: auto;
+  scroll-behavior: smooth;
   position: relative;
   padding: 0;
 }
@@ -115,9 +116,13 @@ section::-webkit-scrollbar-thumb {
 }
 
 #section_top {
-  display: flex;
+  /* display: flex;
   justify-content: space-between;
-  align-items: center;
+  align-items: center; */
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  grid-auto-rows: minmax(auto, auto);
+  gap: 10px;
   padding: 10px;
   position: sticky;
   top: 0;
@@ -126,8 +131,33 @@ section::-webkit-scrollbar-thumb {
   user-select: none;
 }
 
-h2 {
+#section_title {
   margin-bottom: 0;
+  grid-column: 1 / 5;
+}
+
+#new_contact {
+  grid-column: 5;
+}
+
+#search_form {
+  grid-column: 1 / 6;
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  grid-auto-rows: minmax(auto, auto);
+  gap: 10px;
+}
+
+#search_form>select {
+  grid-column: 1 / 2;
+}
+
+#search_form>input[type=text] {
+  grid-column: 2 / 5;
+}
+
+#search_form>input[type=submit] {
+  grid-column: 5 / 6;
 }
 
 #contacts {
