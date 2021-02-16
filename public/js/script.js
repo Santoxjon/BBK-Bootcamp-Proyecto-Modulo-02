@@ -1,6 +1,6 @@
 if (location.pathname != "/contacts") {
     document.querySelector("#new_contact").style.display = "none";
-    document.querySelector('#search_form').action = "/contacts/search/favs";
+    if (document.querySelector('#search_form')) document.querySelector('#search_form').action = "/contacts/search/favs";
 }
 
 (loadQRListeners());
@@ -12,22 +12,17 @@ function loadQRListeners() {
     prof_pics.forEach(prof_pic => {
         let contact_id = prof_pic.id.split('_')[1];
 
-        prof_pic.onclick = (e) => {
+        prof_pic.parentElement.onmouseover = (e) => {
             prof_pic.style.display = "none";
             let qr = document.getElementById(`qr_${contact_id}`);
             qr.style.display = "block";
-            loadQRListeners();
+            prof_pic.parentElement.style.cursor = "none";
         };
-    });
-
-    let qr_codes = document.querySelectorAll(".qr-code");
-    qr_codes.forEach(qr_code => {
-        let contact_id = qr_code.id.split('_')[1];
-        qr_code.onclick = (e) => {
-            qr_code.style.display = "none";
-            let prof_pic = document.getElementById(`prof_${contact_id}`);
+        prof_pic.parentElement.onmouseout = (e) => {
             prof_pic.style.display = "block";
-            loadQRListeners();
+            let qr = document.getElementById(`qr_${contact_id}`);
+            qr.style.display = "none";
+            prof_pic.parentElement.style.cursor = "cursor";
         };
     });
 }
