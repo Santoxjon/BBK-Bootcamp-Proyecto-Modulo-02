@@ -1,7 +1,7 @@
 var express = require('express');
 var router = express.Router();
 let faker = require('faker/locale/es');
-const { ObjectID, ReplSet } = require('mongodb');
+const { ObjectID } = require('mongodb');
 router.use(express.json());
 router.use(express.urlencoded({ extended: true }));
 
