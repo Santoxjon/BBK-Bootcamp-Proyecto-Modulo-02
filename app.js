@@ -12,8 +12,7 @@ let contactRouter = require('./routes/contacts');
 var app = express();
 
 // Mongo
-url test = process.env.MONGODB_URI;
-MongoClient.connect(test, function (err, client) { // Local
+MongoClient.connect("mongodb+srv://jon:jonjon@cluster0.z5bzl.mongodb.net/<dbname>?retryWrites=true&w=majority", function (err, client) { // Local
   // MongoClient.connect("mongodb://127.0.0.1:27017", function (err, client) {
   if (err !== null) {
     console.log(err);
